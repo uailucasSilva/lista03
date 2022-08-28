@@ -1,18 +1,13 @@
 qtdPess = parseInt(prompt("Informe a quantidade de pessoas: "));
-var matriz = [["Nome"]];
-for (i = 1; i <= qtdPess; i++) {
-    matriz.splice(i, 0, [prompt("Informe o nome um nome:")]);
+nomes = [];
+for (i = 0; i < qtdPess; i++) {
+    nomes[i] = prompt(`Informe o nome ${i + 1}:`);
 }
-console.log(matriz);
-var sorteio = [0];
-var nro = Math.ceil(Math.random() * (qtdPess - 1) + 1);
-for (i = 1; i <= qtdPess; i++) {
-    while (sorteio.indexOf(nro) >= 0) {
-         nro = Math.ceil(Math.random() * (qtdPess - 1) + 1);
-    }
-    sorteio.push(nro);
+document.write(`<h1 style='text-align:center'>Ordem de apresentação dos grupos</h2>`)
+for (i = 0; i < qtdPess; i++) {
+    sort = parseInt(Math.random() * nomes.length);
+    nomeout = nomes.splice(sort, 1);
+    document.write(`${i+1}° - ${nomeout[0]}`);
+    document.write(`<hr></hr>`);
 }
-for (i = 1; i <= qtdPess; i++) {
-    document.write(`<p>${i}° ${matriz[sorteio[i]]}</p>`);
-}
-console.log(sorteio);
+
